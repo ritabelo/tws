@@ -64,7 +64,7 @@ jobs:
           # Fix v2 paths
           find dist/v2 -name '*.html' -exec sed -i \
             -e 's|href="/images/|href="/tws/v2/images/|g' \
-            -e 'src="/images/|src="/tws/v2/images/|g' \
+            -e 's|src="/images/|src="/tws/v2/images/|g' \
             -e 's|href="/fonts/|href="/tws/v2/fonts/|g' \
             -e 's|href="/favicon.ico"|href="/tws/v2/favicon.ico"|g' \
             -e 's|href="/"|href="/tws/v2/"|g' \
@@ -73,7 +73,7 @@ jobs:
           # Fix v3 paths
           find dist/v3 -name '*.html' -exec sed -i \
             -e 's|href="/images/|href="/tws/v3/images/|g' \
-            -e 'src="/images/|src="/tws/v3/images/|g' \
+            -e 's|src="/images/|src="/tws/v3/images/|g' \
             -e 's|href="/fonts/|href="/tws/v3/fonts/|g' \
             -e 's|href="/favicon.ico"|href="/tws/v3/favicon.ico"|g' \
             -e 's|href="/"|href="/tws/v3/"|g' \
