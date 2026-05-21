@@ -50,35 +50,6 @@ jobs:
           mkdir -p ../dist/v3
           cp -r out/* ../dist/v3/
 
-      - name: Fix paths for GitHub Pages
-        run: |
-          # Fix v1 paths
-          find dist/v1 -name '*.html' -exec sed -i \
-            -e 's|href="/images/|href="/tws/v1/images/|g' \
-            -e 's|src="/images/|src="/tws/v1/images/|g' \
-            -e 's|href="/fonts/|href="/tws/v1/fonts/|g' \
-            -e 's|href="/favicon.png"|href="/tws/v1/favicon.png"|g' \
-            -e 's|href="/"|href="/tws/v1/"|g' \
-            {} +
-          
-          # Fix v2 paths
-          find dist/v2 -name '*.html' -exec sed -i \
-            -e 's|href="/images/|href="/tws/v2/images/|g' \
-            -e 's|src="/images/|src="/tws/v2/images/|g' \
-            -e 's|href="/fonts/|href="/tws/v2/fonts/|g' \
-            -e 's|href="/favicon.ico"|href="/tws/v2/favicon.ico"|g' \
-            -e 's|href="/"|href="/tws/v2/"|g' \
-            {} +
-          
-          # Fix v3 paths
-          find dist/v3 -name '*.html' -exec sed -i \
-            -e 's|href="/images/|href="/tws/v3/images/|g' \
-            -e 's|src="/images/|src="/tws/v3/images/|g' \
-            -e 's|href="/fonts/|href="/tws/v3/fonts/|g' \
-            -e 's|href="/favicon.ico"|href="/tws/v3/favicon.ico"|g' \
-            -e 's|href="/"|href="/tws/v3/"|g' \
-            {} +
-
       - name: Create landing page
         run: |
           cat > dist/index.html << 'EOF'
