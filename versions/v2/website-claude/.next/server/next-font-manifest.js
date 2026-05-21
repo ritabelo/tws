@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST='{"pages":{},"app":{"/Users/ritabelo/tws/versions/v2/website-claude/app/layout":["static/media/7034fe47d006ebd0-s.p.ttf","static/media/bd5bd172fbabc3fb-s.p.ttf","static/media/fd2499b65561f7f8-s.p.ttf"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}';
