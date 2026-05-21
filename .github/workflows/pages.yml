@@ -30,8 +30,6 @@ jobs:
         run: |
           cd v1
           npm ci
-          # Set basePath for GitHub Pages project site
-          sed -i "s|module.exports = nextConfig|nextConfig.basePath = '/tws/v1'\nmodule.exports = nextConfig|" next.config.js
           npm run build
           mkdir -p ../dist/v1
           cp -r out/* ../dist/v1/
@@ -40,8 +38,6 @@ jobs:
         run: |
           cd v2/website-claude
           npm ci
-          # Set basePath for GitHub Pages project site
-          sed -i "s|module.exports = nextConfig|nextConfig.basePath = '/tws/v2'\nmodule.exports = nextConfig|" next.config.js
           npm run build
           mkdir -p ../../dist/v2
           cp -r out/* ../../dist/v2/
@@ -50,8 +46,6 @@ jobs:
         run: |
           cd v3
           npm ci
-          # Set basePath for GitHub Pages project site
-          sed -i "s|export default nextConfig;|nextConfig.basePath = '/tws/v3';\nexport default nextConfig;|" next.config.mjs
           npm run build
           mkdir -p ../dist/v3
           cp -r out/* ../dist/v3/
