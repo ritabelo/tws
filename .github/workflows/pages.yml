@@ -50,6 +50,30 @@ jobs:
           mkdir -p ../dist/v3
           cp -r out/* ../dist/v3/
 
+      - name: Fix public asset paths
+        run: |
+          # Next.js basePath doesn't apply to public/ folder assets.
+          # We must rewrite /images/, /fonts/, and favicon references
+          # in both HTML and JS chunk files so they load from /tws/vX/...
+          
+          for ver in v1 v2 v3; do
+            base="/tws/$ver"
+            
+            # Fix HTML files
+            find "dist/$ver" -name '*.html' -exec sed -i \
+              -e "s|\"\/images\/|\"$base/images/|g" \
+              -e "s|\"\/fonts\/|\"$base/fonts/|g" \
+              -e "s|href=\"\/favicon.png\"|href=\"$base/favicon.png\"|g" \
+              -e "s|href=\"\/favicon.ico\"|href=\"$base/favicon.ico\"|g" \
+              {} +
+            
+            # Fix JS chunk files (Next.js serializes props into JS)
+            find "dist/$ver/_next/static/chunks" -name '*.js' -exec sed -i \
+              -e "s|\"\/images\/|\"$base/images/|g" \
+              -e "s|\"\/fonts\/|\"$base/fonts/|g" \
+              {} +
+          done
+
       - name: Create landing page
         run: |
           cat > dist/index.html << 'EOF'
